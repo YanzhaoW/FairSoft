@@ -339,7 +339,7 @@ else()
 endif()
 ExternalProject_Add(geant4
   URL https://geant4-data.web.cern.ch/releases/geant4-v${geant4_version}.tar.gz
-  URL_HASH SHA256=46ad7fab3c5cb4bd0bdd77dd6d3e2283184819235bcbc01b2d117d81b35596a6
+  URL_HASH SHA256=892aedd7425262a50ac3d3c7117d81c0c0da4b408c6880dbaf5478b9301e488c
   ${CMAKE_DEFAULT_ARGS} CMAKE_ARGS
     "-DCMAKE_CXX_STANDARD=${CMAKE_CXX_STANDARD}"
     ${mt}
