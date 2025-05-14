@@ -328,7 +328,7 @@ ExternalProject_Add(pythia8
 )
 
 list(APPEND packages geant4)
-set(geant4_version "11.2.0")
+set(geant4_version "11.3.2")
 if(GEANT4MT)
   set(mt
     "-DGEANT4_BUILD_MULTITHREADED=ON"
