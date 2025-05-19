@@ -419,8 +419,8 @@ ExternalProject_Add(root
     ${root_builtin_nlohmannjson}
     ${root_cocoa}
   UPDATE_DISCONNECTED ON
-  PATCH_COMMAND ${patch} -p1 -i "${CMAKE_SOURCE_DIR}/legacy/root/fix_macos_sdk_mismatch.patch"
-  COMMAND ${patch} -p1 -i "${CMAKE_SOURCE_DIR}/legacy/root/fix_macosx_findOpenGL.patch"
+  # PATCH_COMMAND ${patch} -p1 -i "${CMAKE_SOURCE_DIR}/legacy/root/fix_macos_sdk_mismatch.patch"
+  # COMMAND ${patch} -p1 -i "${CMAKE_SOURCE_DIR}/legacy/root/fix_macosx_findOpenGL.patch"
   DEPENDS pythia8 vc ${extract_source_cache_target}
   ${LOG_TO_FILE}
 )
