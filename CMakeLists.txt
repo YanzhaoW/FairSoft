@@ -28,6 +28,7 @@ if(NOT DEFINED BUILD_METHOD)
 endif()
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+set(USE_ROOT_VERSION, "6.36.00" CACHE STRING "Set the version of ROOT")
 
 include(${BUILD_METHOD})
 
