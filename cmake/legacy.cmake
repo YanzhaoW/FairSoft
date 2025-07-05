@@ -385,6 +385,7 @@ ExternalProject_Add(root
   GIT_REPOSITORY https://github.com/root-project/root/ GIT_TAG v${root_version_gittag}
   GIT_SHALLOW 1
   ${CMAKE_DEFAULT_ARGS} CMAKE_ARGS
+    "-DCMAKE_CXX_STANDARD=23"
     "-Daqua=ON"
     "-Dasimage=ON"
     "-Dcintex=OFF"
