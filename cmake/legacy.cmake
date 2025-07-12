@@ -191,6 +191,7 @@ ExternalProject_Add(fmt
   URL "https://github.com/fmtlib/fmt/releases/download/${fmt_version}/fmt-${fmt_version}.zip"
   # URL_HASH SHA256=b84e58a310c9b50196cda48d5678d5fa0849bca19e5fdba6b684f0ee93ed9d1b
   ${CMAKE_DEFAULT_ARGS} CMAKE_ARGS
+    "-DCMAKE_CXX_STANDARD=23"
     "-DFMT_DOC=OFF"
   ${LOG_TO_FILE}
   ${DEPENDS_ON_SOURCE_CACHE}
@@ -437,15 +438,15 @@ ExternalProject_Add(vmc
   DEPENDS root ${extract_source_cache_target}
 )
 
-list(APPEND packages geant3)
-set(geant3_version "4-4_fairsoft")
-ExternalProject_Add(geant3
-  GIT_REPOSITORY https://github.com/FairRootGroup/geant3 GIT_TAG v${geant3_version}
-  ${CMAKE_DEFAULT_ARGS} CMAKE_ARGS
-    "-DBUILD_GCALOR=ON"
-  DEPENDS root vmc ${extract_source_cache_target}
-  ${LOG_TO_FILE}
-)
+# list(APPEND packages geant3)
+# set(geant3_version "4-4_fairsoft")
+# ExternalProject_Add(geant3
+#   GIT_REPOSITORY https://github.com/FairRootGroup/geant3 GIT_TAG v${geant3_version}
+#   ${CMAKE_DEFAULT_ARGS} CMAKE_ARGS
+#     "-DBUILD_GCALOR=ON"
+#   DEPENDS root vmc ${extract_source_cache_target}
+#   ${LOG_TO_FILE}
+# )
 
 list(APPEND packages vgm)
 set(vgm_version "5-3-1")
