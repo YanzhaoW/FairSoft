@@ -434,15 +434,15 @@ ExternalProject_Add(vmc
   DEPENDS root ${extract_source_cache_target}
 )
 
-list(APPEND packages geant3)
-set(geant3_version "4-4_fairsoft")
-ExternalProject_Add(geant3
-  GIT_REPOSITORY https://github.com/FairRootGroup/geant3 GIT_TAG v${geant3_version}
-  ${CMAKE_DEFAULT_ARGS} CMAKE_ARGS
-    "-DBUILD_GCALOR=ON"
-  DEPENDS root vmc ${extract_source_cache_target}
-  ${LOG_TO_FILE}
-)
+# list(APPEND packages geant3)
+# set(geant3_version "4-4_fairsoft")
+# ExternalProject_Add(geant3
+#   GIT_REPOSITORY https://github.com/FairRootGroup/geant3 GIT_TAG v${geant3_version}
+#   ${CMAKE_DEFAULT_ARGS} CMAKE_ARGS
+#     "-DBUILD_GCALOR=ON"
+#   DEPENDS root vmc ${extract_source_cache_target}
+#   ${LOG_TO_FILE}
+# )
 
 list(APPEND packages vgm)
 set(vgm_version "5-3-1")
