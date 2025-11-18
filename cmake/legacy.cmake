@@ -551,6 +551,25 @@ add_custom_target(source-cache
   COMMENT "Creating source cache at ${tarfile}"
 )
 
+# CI_BUILD_MODE: Clean build directories after installation to save disk space
+if(NOT DEFINED CI_BUILD_MODE)
+  set(CI_BUILD_MODE OFF)
+endif()
+
+if(CI_BUILD_MODE)
+  foreach(pkg IN LISTS packages)
+    ExternalProject_Add_Step(${pkg} cleanup_build
+      COMMAND ${CMAKE_COMMAND}
+        -DPACKAGE_NAME=${pkg}
+        -DBUILD_DIR=${CMAKE_BINARY_DIR}/Build/${pkg}
+        -P ${CMAKE_SOURCE_DIR}/cmake/cleanup-build-dir.cmake
+      COMMENT "Cleaning build directory for ${pkg} to save disk space"
+      DEPENDEES install
+      ALWAYS OFF
+    )
+  endforeach()
+endif()
+
 include(CTest)
 
 foreach(ver IN ITEMS 18.6 18.8 19.0)
@@ -603,6 +622,12 @@ if(SOURCE_CACHE)
   message(STATUS "  ${Cyan}SOURCE CACHE${CR}       ${BGreen}${SOURCE_CACHE}${CR}")
 else()
   message(STATUS "  ${Cyan}SOURCE CACHE${CR}       using upstream URLs (generate cache by building target 'source-cache' and pass via ${BMagenta}-DSOURCE_CACHE=...${CR})")
+endif()
+message(STATUS "  ")
+if(CI_BUILD_MODE)
+  message(STATUS "  ${Cyan}CI_BUILD_MODE${CR}      ${BGreen}ON${CR} (build directories cleaned after install to save space)")
+else()
+  message(STATUS "  ${Cyan}CI_BUILD_MODE${CR}      ${BGreen}OFF${CR} (enable with ${BMagenta}-DCI_BUILD_MODE=ON${CR} to save disk space)")
 endif()
 if(CMAKE_OSX_SYSROOT)
   message(STATUS "  ")

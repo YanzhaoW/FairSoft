@@ -38,6 +38,17 @@ set(CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}/install" CACHE PATH "Install prefi
 # set(GEANT4MT ON CACHE BOOL "Build Geant4 in multi-threading mode" FORCE)
 
 #
+# CI Build Mode (default OFF)
+#
+#  Enable this to automatically clean build directories after each package is installed.
+#  This significantly reduces disk space usage during the build process, which is useful
+#  in CI environments or systems with limited storage. The cleanup step logs the amount
+#  of space reclaimed for each package.
+#
+# set(CI_BUILD_MODE OFF CACHE BOOL "Clean build directories after install" FORCE)
+# set(CI_BUILD_MODE ON CACHE BOOL "Clean build directories after install" FORCE)
+
+#
 # Python
 #
 #  On macOS we assume you have used <source-dir>/legacy/setup-macos.sh which
