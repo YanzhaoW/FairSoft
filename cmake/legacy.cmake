@@ -422,7 +422,7 @@ ExternalProject_Add(root
   UPDATE_DISCONNECTED ON
   # PATCH_COMMAND ${patch} -p1 -i "${CMAKE_SOURCE_DIR}/legacy/root/fix_macos_sdk_mismatch.patch"
   # COMMAND ${patch} -p1 -i "${CMAKE_SOURCE_DIR}/legacy/root/fix_macosx_findOpenGL.patch"
-  DEPENDS pythia8 vc ${extract_source_cache_target}
+  DEPENDS pythia8 vc ${extract_source_cache_target} geant4
   ${LOG_TO_FILE}
 )
 
