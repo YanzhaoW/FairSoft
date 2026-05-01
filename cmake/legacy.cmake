@@ -227,7 +227,7 @@ ExternalProject_Add(fairlogger
 )
 
 list(APPEND packages zeromq)
-if(DEFINED zeromq_version)
+if(NOT DEFINED zeromq_version)
   set(zeromq_version "v4.3.5")
 endif()
 ExternalProject_Add(zeromq
